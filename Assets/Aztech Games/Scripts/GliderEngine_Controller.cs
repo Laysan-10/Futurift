@@ -28,7 +28,7 @@ namespace AztechGames
         /// </summary>
         void EngineInputs()//Обрабатывает ввод игрока.
         {
-            Debug.Log(_right_trigger.action.triggered);
+            Debug.Log("_right_trigger" + _right_trigger.action.triggered);
             if (_right_trigger.action.triggered)
                 thrust += Time.deltaTime * acceleration;//тяга увел проп времени и коэф ускорения.
             else if (!_right_trigger.action.triggered)

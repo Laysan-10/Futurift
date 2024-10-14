@@ -94,6 +94,7 @@ namespace AztechGames
         }
         public virtual void GetInputs()
         {
+            Debug.Log("_right_joystic" + _right_joystic.action.ReadValue<Vector2>().x);
             // Примените входные значения к управляющим поверхностям
             AileronController(_right_joystic.action.ReadValue<Vector2>().x);// UI scroll
             ElevatorController(_right_joystic.action.ReadValue<Vector2>().y);
@@ -126,16 +127,16 @@ namespace AztechGames
 
         void SlatController()
         {
-            Debug.Log(_left_trigger.action.triggered);
+            Debug.Log("_left_trigger" + _left_trigger.action.triggered);
             // Increase slat angle when pressing B, decrease when pressing V
             if (_left_trigger.action.triggered)
             {
                 SlatAmount += Time.deltaTime * surfaceSpeed;
             }
-            else if (!_left_trigger.action.triggered)
-            {
-                SlatAmount -= Time.deltaTime * surfaceSpeed;
-            }
+            //else if (!_left_trigger.action.triggered)
+            //{
+            //    SlatAmount -= Time.deltaTime * surfaceSpeed;
+            //}
 
             // Clamp the slat amount between 0 and slatMaxAngle
             SlatAmount = Mathf.Clamp(SlatAmount, 0f, slatMaxAngle);
