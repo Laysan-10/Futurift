@@ -28,11 +28,22 @@ namespace AztechGames
         /// </summary>
         void EngineInputs()//Обрабатывает ввод игрока.
         {
-            Debug.Log("_right_trigger" + _right_trigger.action.triggered);
-            if (_right_trigger.action.triggered)
+            //Debug.Log("right_trigger" + _right_trigger.action.ReadValue<float>().ToString());
+
+
+            if (_right_trigger.action.ReadValue<float>() == 1)
+            {
                 thrust += Time.deltaTime * acceleration;//тяга увел проп времени и коэф ускорения.
-            else if (!_right_trigger.action.triggered)
-                thrust -= Time.deltaTime * acceleration;
+                Debug.Log(thrust);
+            }
+            else
+            {
+                if (thrust > 0f)
+                {
+                    thrust -= Time.deltaTime * acceleration;
+                }
+            }
+            //    thrust -= Time.deltaTime * acceleration;
 
             thrust -= GliderSurface_Controller.Instance.SlatAmount * Time.deltaTime;
         }
@@ -44,10 +55,10 @@ namespace AztechGames
                 GliderSurface_Controller.Instance.GetInputs();
                 
                 GliderSurface_Controller.Instance.HandleInputs();
-                //if(_physiconglider.AirSpeed() >= 30)
-                //{
+                if (_physiconglider.AirSpeed() >= 30)
+                {
                     GliderSurface_Controller.Instance.PlaneRotations();
-                //}
+                }
                 EngineInputs();
             }
         }

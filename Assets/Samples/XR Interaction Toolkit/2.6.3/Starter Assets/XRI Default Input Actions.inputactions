@@ -2730,6 +2730,54 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "XRI LeftHand(Custom)",
+            "id": "6e3814f0-04e1-409b-ae47-9abd25173e78",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "c93ddbad-7c2d-49b4-880b-18b28fb2fbb4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "YAW",
+                    "type": "Value",
+                    "id": "f0a857d9-18f7-4427-812a-4aafde3c8770",
+                    "expectedControlType": "Stick",
+                    "processors": "InvertVector2",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c0998eb3-7bc1-49ab-87e3-7dfa272cc80b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad0f0376-96ec-422d-9209-fbfc74412d52",
+                    "path": "<XRController>{LeftHand}/trackingState",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "YAW",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

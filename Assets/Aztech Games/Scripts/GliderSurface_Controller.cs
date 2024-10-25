@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Android;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
@@ -78,8 +79,8 @@ namespace AztechGames
         {
             //Yaw axis inputs
             inputYawLeft = _left_joystic.action.ReadValue<Vector2>().x;
-            
-           
+
+            //Debug.Log(" _left_joystic " + _left_joystic.action.ReadValue<Vector2>().x);
 
             currentYawSpeed = yawSpeed * yawTurboMultiplier;
 
@@ -94,7 +95,7 @@ namespace AztechGames
         }
         public virtual void GetInputs()
         {
-            Debug.Log("_right_joystic" + _right_joystic.action.ReadValue<Vector2>().x);
+            //Debug.Log("_right_joystic " + _right_joystic.action.ReadValue<Vector2>().x);
             // Примените входные значения к управляющим поверхностям
             AileronController(_right_joystic.action.ReadValue<Vector2>().x);// UI scroll
             ElevatorController(_right_joystic.action.ReadValue<Vector2>().y);
@@ -126,13 +127,20 @@ namespace AztechGames
         }
 
         void SlatController()
+
         {
-            Debug.Log("_left_trigger" + _left_trigger.action.triggered);
+            
+
             // Increase slat angle when pressing B, decrease when pressing V
-            if (_left_trigger.action.triggered)
+            if (_left_trigger.action.ReadValue<float>() == 1)
             {
                 SlatAmount += Time.deltaTime * surfaceSpeed;
             }
+            else
+            {
+                SlatAmount -= Time.deltaTime * surfaceSpeed;
+            }
+                    
             //else if (!_left_trigger.action.triggered)
             //{
             //    SlatAmount -= Time.deltaTime * surfaceSpeed;
